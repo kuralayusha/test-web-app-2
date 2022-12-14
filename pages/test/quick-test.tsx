@@ -81,7 +81,9 @@ function QuickTest({ datas }: any) {
 
 export async function getServerSideProps() {
   // fetch data from external API
-  const res = await axios.get(`https://opentdb.com/api.php?amount=10`)
+  const res = await axios.get(
+    `https://opentdb.com/api.php?amount=10&type=multiple`
+  )
   const data = await res.data
   const datawithoptions = getOptions(data.results)
   function getOptions(arr: any) {
