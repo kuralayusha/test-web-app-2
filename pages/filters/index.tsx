@@ -1,10 +1,38 @@
 import Link from 'next/link'
+import useFilters from '../../stores/filtersStore'
 
 function filters() {
+  const {
+    filters,
+    setNumberFilter,
+    setCategoryFilter,
+    setDifficultyFilter,
+    setFiltersDefault,
+  } = useFilters((state: any) => state)
+
+  function handleNumber(event: any) {
+    const { name, value } = event.target
+    setNumberFilter(value)
+    // console.log(value)
+  }
+
+  function handleCategory(event: any) {
+    const { name, value } = event.target
+    setCategoryFilter(value)
+    // console.log(value)
+  }
+
+  function handleDifficulty(event: any) {
+    const { name, value } = event.target
+    setDifficultyFilter(value)
+    // console.log(value)
+  }
+
   console.log('filters page rendered')
+  // console.log(filters)
+
   return (
-    <div>
-       <div className="form--container">
+    <div className="form--container">
       <h1 className="app--title">Quizzical</h1>
 
       <form>
@@ -12,7 +40,7 @@ function filters() {
           <label htmlFor="number">Select Number Of Question:</label>
           <select
             id="number"
-            value={data.number}
+            value={filters.number}
             onChange={handleNumber}
             name="number"
           >
@@ -32,7 +60,7 @@ function filters() {
           <label htmlFor="category">Select Category:</label>
           <select
             id="category"
-            value={data.category}
+            value={filters.category}
             onChange={handleCategory}
             name="category"
           >
@@ -44,9 +72,15 @@ function filters() {
             <option value="&category=13">
               Entertainment: Musicals & Theaters
             </option>
-            <option value="&category=14">Entertainment: Television</option>
-            <option value="&category=15">Entertainment: Video Games</option>
-            <option value="&category=16">Entertainment: Board Games</option>
+            <option value="&category=14">
+              Entertainment: Television
+            </option>
+            <option value="&category=15">
+              Entertainment: Video Games
+            </option>
+            <option value="&category=16">
+              Entertainment: Board Games
+            </option>
             <option value="&category=17">Science & Nature</option>
             <option value="&category=18">Science: Computers</option>
             <option value="&category=19">Science: Mathematics</option>
@@ -59,7 +93,9 @@ function filters() {
             <option value="&category=26">Celebrities</option>
             <option value="&category=27">Animals</option>
             <option value="&category=28">Vehicles</option>
-            <option value="&category=29">Entertainment: Comics</option>
+            <option value="&category=29">
+              Entertainment: Comics
+            </option>
             <option value="&category=30">Science: Gadgets</option>
             <option value="&category=31">
               Entertainment: Japanese Anime & Manga
@@ -73,7 +109,7 @@ function filters() {
           <label htmlFor="difficulty">Select Difficulty:</label>
           <select
             id="difficulty"
-            value={data.difficulty}
+            value={filters.difficulty}
             onChange={handleDifficulty}
             name="difficulty"
           >
@@ -84,9 +120,13 @@ function filters() {
           </select>
         </div>
         <div className="form--card--btn">
-      <Link href="./test/filtered-test">
-        <button>start test</button>
-      </Link>
+          <Link href="/test/filtered-test">
+            <button className="start--btn" type="button">
+              Start quiz
+            </button>
+          </Link>
+        </div>
+      </form>
     </div>
   )
 }
