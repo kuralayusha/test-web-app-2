@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
-import useGameFilters from '../../stores/gameMode'
-import useQuestionsData from '../../stores/allQuestionsData'
+import useGameFilters from '../../stores/gameModeStore'
+import useQuestionsData from '../../stores/allQuestionsDataStore'
 import axios from 'axios'
 import Link from 'next/link'
 // import the css file

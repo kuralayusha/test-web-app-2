@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import useGameFilters from '../stores/gameMode'
+import useGameFilters from '../stores/gameModeStore'
 
 function Home() {
   const { gameFilters, setGameFiltersTrue, setGameFiltersFalse } =
