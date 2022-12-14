@@ -1,6 +1,6 @@
 import React from 'react'
 import useGameFilters from '../../stores/gameMode'
-import useQuestionsData from '../../stores/allQuestionsData'
+import useQuestionsData from '../../stores/AllQuestionsData'
 import axios from 'axios'
 
 function QuickTest({ datas }: any) {
