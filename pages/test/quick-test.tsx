@@ -1,9 +1,70 @@
 import React from 'react'
+import { useState } from 'react'
 import useGameFilters from '../../stores/gameMode'
-import useQuestionsData from '../../stores/AllQuestionsData'
+import useQuestionsData from '../../stores/allQuestionsData'
 import axios from 'axios'
+import Link from 'next/link'
+// import the css file
 
 function QuickTest({ datas }: any) {
+  const [questions, setQuestions] = useState<any>([])
+  const [optionChosen, setOptionChosen] = useState<any>({})
+  const [showScore, setShowScore] = useState<any>(false)
+  const [score, setScore] = useState<any>(-1)
+  const [loading, setLoading] = useState<any>(true)
+
+  function handleSelectedOption(
+    optionTitle: any,
+    question: any,
+    event: any
+  ) {
+    optionChosen[question] = optionTitle
+    setOptionChosen(optionChosen)
+    const optionsContainer: any = document.getElementById(
+      question + 'options'
+    )
+    const optionsBtns = optionsContainer.childNodes
+    for (let i = 0; i < optionsBtns.length; i++) {
+      // console.log(optionsBtns[i].innerHTML, optionTitle)
+      if (
+        optionsBtns[i].classList.contains('active') &&
+        optionsBtns[i].innerHTML !== optionTitle
+      ) {
+        optionsBtns[i].classList.remove('active')
+      } else if (optionsBtns[i].innerHTML === optionTitle) {
+        optionsBtns[i].classList.add('active')
+      }
+    }
+    // console.log(optionsBtns)
+    console.log({ optionChosen })
+  }
+
+  function handleCheck() {
+    setShowScore(true)
+    datas.results.forEach((question: any) => {
+      const givenAnswer = optionChosen[question.question]
+      const trueAnswer = question.correct_answer
+      const optionsContainer: any = document.getElementById(
+        question.question + 'options'
+      )
+      const optionsBtns = optionsContainer.childNodes
+      if (givenAnswer === trueAnswer) {
+        setScore((oldScore: any) =>
+          oldScore === -1 ? 1 : oldScore + 1
+        )
+      }
+      optionsBtns.forEach((button: any) => {
+        if (button.innerHTML === trueAnswer) {
+          button.classList.remove('active')
+          button.classList.add('correct')
+        } else if (button.innerHTML === givenAnswer) {
+          button.classList.remove('active')
+          button.classList.add('incorrect')
+        }
+      })
+    })
+  }
+
   console.log(datas.results)
   console.log('quick test page rendered')
   return (
@@ -19,33 +80,49 @@ function QuickTest({ datas }: any) {
             <div className="options" id={q.question + 'options'}>
               <button
                 className="start--btn"
-                // onClick={(event) =>
-                //   handleSelectedOption(q.options[0], q.question, event)
-                // }
+                onClick={(event) =>
+                  handleSelectedOption(
+                    q.options[0],
+                    q.question,
+                    event
+                  )
+                }
               >
                 {q.options[0]}
               </button>
               <button
                 className="start--btn"
-                // onClick={(event) =>
-                //   handleSelectedOption(q.options[1], q.question, event)
-                // }
+                onClick={(event) =>
+                  handleSelectedOption(
+                    q.options[1],
+                    q.question,
+                    event
+                  )
+                }
               >
                 {q.options[1]}
               </button>
               <button
                 className="start--btn"
-                // onClick={(event) =>
-                //   handleSelectedOption(q.options[2], q.question, event)
-                // }
+                onClick={(event) =>
+                  handleSelectedOption(
+                    q.options[2],
+                    q.question,
+                    event
+                  )
+                }
               >
                 {q.options[2]}
               </button>
               <button
                 className="start--btn"
-                // onClick={(event) =>
-                //   handleSelectedOption(q.options[3], q.question, event)
-                // }
+                onClick={(event) =>
+                  handleSelectedOption(
+                    q.options[3],
+                    q.question,
+                    event
+                  )
+                }
               >
                 {q.options[3]}
               </button>
@@ -55,17 +132,22 @@ function QuickTest({ datas }: any) {
         ))}
       </div>
       <br />
-      {/* <div className="solutions">
+      <div className="solutions">
         {showScore && (
           <small className="score">
-            You scored {score === -1 ? 0 : score}/{data.number}{' '}
-            correct answers
+            You scored {score === -1 ? 0 : score}/
+            {datas.results.length} correct answers
           </small>
         )}
         {showScore ? (
-          <button className="start--btn" onClick={handleNewGame}>
-            New Game
-          </button>
+          <Link href="/">
+            <button
+              className="start--btn"
+              // onClick={handleNewGame}
+            >
+              New Game
+            </button>
+          </Link>
         ) : (
           <button
             className="start--btn"
@@ -74,7 +156,7 @@ function QuickTest({ datas }: any) {
             Check Answer
           </button>
         )}
-      </div> */}
+      </div>
     </div>
   )
 }

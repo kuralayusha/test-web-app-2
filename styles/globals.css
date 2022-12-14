@@ -1,0 +1,26 @@
+.questions--container button {
+    font-size: 24px;
+}
+
+.start--btn {
+    background-color: rgb(207, 207, 207);
+    border: none;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.start--btn:hover {
+    background-color: rgba(0, 255, 255, 0.199);
+}
+
+.start--btn.active {
+    background-color: rgba(66, 102, 221, 0.692);
+}
+
+.start--btn.correct {
+    background-color: rgba(0, 255, 0, 0.199);
+}
+
+.start--btn.incorrect {
+    background-color: rgba(255, 0, 0, 0.199);
+}
