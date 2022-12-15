@@ -38,7 +38,7 @@ function Home() {
           <Link
             className="button--link"
             href={{
-              pathname: '/test/quick-test',
+              pathname: '/tests/random',
             }}
           >
             Quick Test

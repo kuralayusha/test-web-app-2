@@ -121,7 +121,7 @@ function filters() {
         </div>
         <div className="form--card--btn">
           <button className="starter--btn" type="button">
-            <Link className="button--link" href="/test/filtered-test">
+            <Link className="button--link" href="/tests/filtered">
               Start Test
             </Link>
           </button>
