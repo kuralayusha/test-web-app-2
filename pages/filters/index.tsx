@@ -33,7 +33,7 @@ function filters() {
 
   return (
     <div className="form--container">
-      <h1 className="app--title">Quizzical</h1>
+      <h1>Select Your Filters</h1>
 
       <form>
         <div className="form--card">
@@ -120,11 +120,11 @@ function filters() {
           </select>
         </div>
         <div className="form--card--btn">
-          <Link href="/test/filtered-test">
-            <button className="start--btn" type="button">
-              Start quiz
-            </button>
-          </Link>
+          <button className="starter--btn" type="button">
+            <Link className="button--link" href="/test/filtered-test">
+              Start Test
+            </Link>
+          </button>
         </div>
       </form>
     </div>
