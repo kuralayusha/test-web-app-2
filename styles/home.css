@@ -37,6 +37,14 @@
     line-height: 19px;
 }
 
+.home--btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
 .starter--btn {
     background-color: #4D5B9E;
     color: #F5F7FB;

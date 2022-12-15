@@ -10,12 +10,7 @@ font-family: 'Karla', sans-serif; */
 }
 
 body {
-    /* background-color: #e6707048; */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* background-image: linear-gradient(to bottom right, #fff, #29326485); */
     padding: 10px;
 }
 

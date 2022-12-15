@@ -1,0 +1,40 @@
+@media screen and (min-width: 650px) {
+
+    /*  */
+    /* home page */
+    /*  */
+
+    .home--btns {
+        margin-top: 30px;
+        flex-direction: row;
+        width: 460px;
+        justify-content: space-between;
+    }
+
+    /*  */
+    /* tests pages */
+    /*  */
+
+    .options {
+        /* background-color: yellow; */
+        display: flex;
+        flex-direction: row;
+        /* width: 460px; */
+        /* justify-content: space-between; */
+        /* padding: 0 15px; */
+    }
+
+    .option--btn {
+        margin-right: 20px;
+        min-width: 100px;
+    }
+
+    /*  */
+    /* filter page */
+    /*  */
+
+    .form--container {
+        /* background-color: aqua; */
+        margin: 60% 0;
+    }
+}

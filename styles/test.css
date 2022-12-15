@@ -1,5 +1,7 @@
 .questions--container {
     /* background-color: rgba(218, 240, 93, 0.247); */
+    /* background-image: linear-gradient(to bottom right, #fff, #29326485); */
+
     display: flex;
     justify-content: center;
     /* align-items: center; */
@@ -46,6 +48,8 @@
     font-size: 14.24px;
     line-height: 12px;
     text-align: center;
+
+    overflow: hidden;
 }
 
 .option--btn:hover {

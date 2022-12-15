@@ -3,6 +3,7 @@ import '../styles/globals.css'
 import '../styles/test.css'
 import '../styles/home.css'
 import '../styles/filters.css'
+import '../styles/mediaQueries.css'
 
 type AppProps = {
   Component: React.ComponentType
