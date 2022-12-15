@@ -60,6 +60,8 @@ function QuickTest({ datas }: any) {
         } else if (button.innerHTML === givenAnswer) {
           button.classList.remove('active')
           button.classList.add('incorrect')
+        } else {
+          button.classList.add('disabled')
         }
       })
     })

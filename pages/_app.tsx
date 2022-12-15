@@ -1,5 +1,8 @@
 import Layout from '../components/Layout'
 import '../styles/globals.css'
+import '../styles/test.css'
+import '../styles/home.css'
+import '../styles/filters.css'
 
 type AppProps = {
   Component: React.ComponentType
