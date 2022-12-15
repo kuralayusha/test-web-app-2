@@ -186,70 +186,48 @@ function FilteredTest({ datas }: any) {
 
   return (
     <div className="questions--container" id="style-1">
-      <div className="questions--box">
-        {questions.map((q: any) => (
-          <div className="questions" key={q.question} id={q.question}>
-            <div className="questions--info">
-              <h4>Category / {q.category}</h4>
-              <h4>Difficulty / {q.difficulty}</h4>
-            </div>
-            <h3 className="question--title">{q.question}</h3>
-            <div className="options" id={q.question + 'options'}>
-              <button
-                className="start--btn"
-                onClick={(event) =>
-                  handleSelectedOption(
-                    q.options[0],
-                    q.question,
-                    event
-                  )
-                }
-              >
-                {q.options[0]}
-              </button>
-              <button
-                className="start--btn"
-                onClick={(event) =>
-                  handleSelectedOption(
-                    q.options[1],
-                    q.question,
-                    event
-                  )
-                }
-              >
-                {q.options[1]}
-              </button>
-              <button
-                className="start--btn"
-                onClick={(event) =>
-                  handleSelectedOption(
-                    q.options[2],
-                    q.question,
-                    event
-                  )
-                }
-              >
-                {q.options[2]}
-              </button>
-              <button
-                className="start--btn"
-                onClick={(event) =>
-                  handleSelectedOption(
-                    q.options[3],
-                    q.question,
-                    event
-                  )
-                }
-              >
-                {q.options[3]}
-              </button>
-            </div>
-            <hr />
+      {questions.map((q: any) => (
+        <div className="questionBox" key={q.question} id={q.question}>
+          <h3 className="question--title">{q.question}</h3>
+          <div className="options" id={q.question + 'options'}>
+            <button
+              className="option--btn"
+              onClick={(event) =>
+                handleSelectedOption(q.options[0], q.question, event)
+              }
+            >
+              {q.options[0]}
+            </button>
+            <button
+              className="option--btn"
+              onClick={(event) =>
+                handleSelectedOption(q.options[1], q.question, event)
+              }
+            >
+              {q.options[1]}
+            </button>
+            <button
+              className="option--btn"
+              onClick={(event) =>
+                handleSelectedOption(q.options[2], q.question, event)
+              }
+            >
+              {q.options[2]}
+            </button>
+            <button
+              className="option--btn"
+              onClick={(event) =>
+                handleSelectedOption(q.options[3], q.question, event)
+              }
+            >
+              {q.options[3]}
+            </button>
           </div>
-        ))}
-      </div>
+          <hr />
+        </div>
+      ))}
       <br />
-      <div className="solutions">
+      <div className="footer">
         {showScore && (
           <small className="score">
             You scored {score === -1 ? 0 : score}/{filters.number}{' '}
@@ -259,7 +237,7 @@ function FilteredTest({ datas }: any) {
         {showScore ? (
           <Link href="/">
             <button
-              className="start--btn"
+              className="starter--btn"
               // onClick={handleNewGame}
             >
               New Game
@@ -267,7 +245,7 @@ function FilteredTest({ datas }: any) {
           </Link>
         ) : (
           <button
-            className="start--btn"
+            className="starter--btn"
             onClick={() => handleCheck()}
           >
             Check Answer
@@ -371,6 +349,10 @@ function FilteredTest({ datas }: any) {
 }
 
 // this is the function that will be rendered on the server
+
+// filtersi altta tanımlayıp eklemeyi denedim
+// Cannot read properties of null (reading 'useRef')
+// bu error engel oldu
 
 // export async function getServerSideProps() {
 //   // fetch data from external API with axios includes category, difficulty, type

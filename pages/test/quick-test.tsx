@@ -69,70 +69,48 @@ function QuickTest({ datas }: any) {
   console.log('quick test page rendered')
   return (
     <div className="questions--container" id="style-1">
-      <div className="questions--box">
-        {datas.results.map((q: any) => (
-          <div className="questions" key={q.question} id={q.question}>
-            <div className="questions--info">
-              <h4>Category / {q.category}</h4>
-              <h4>Difficulty / {q.difficulty}</h4>
-            </div>
-            <h3 className="question--title">{q.question}</h3>
-            <div className="options" id={q.question + 'options'}>
-              <button
-                className="start--btn"
-                onClick={(event) =>
-                  handleSelectedOption(
-                    q.options[0],
-                    q.question,
-                    event
-                  )
-                }
-              >
-                {q.options[0]}
-              </button>
-              <button
-                className="start--btn"
-                onClick={(event) =>
-                  handleSelectedOption(
-                    q.options[1],
-                    q.question,
-                    event
-                  )
-                }
-              >
-                {q.options[1]}
-              </button>
-              <button
-                className="start--btn"
-                onClick={(event) =>
-                  handleSelectedOption(
-                    q.options[2],
-                    q.question,
-                    event
-                  )
-                }
-              >
-                {q.options[2]}
-              </button>
-              <button
-                className="start--btn"
-                onClick={(event) =>
-                  handleSelectedOption(
-                    q.options[3],
-                    q.question,
-                    event
-                  )
-                }
-              >
-                {q.options[3]}
-              </button>
-            </div>
-            <hr />
+      {datas.results.map((q: any) => (
+        <div className="questionBox" key={q.question} id={q.question}>
+          <h3 className="question--title">{q.question}</h3>
+          <div className="options" id={q.question + 'options'}>
+            <button
+              className="option--btn"
+              onClick={(event) =>
+                handleSelectedOption(q.options[0], q.question, event)
+              }
+            >
+              {q.options[0]}
+            </button>
+            <button
+              className="option--btn"
+              onClick={(event) =>
+                handleSelectedOption(q.options[1], q.question, event)
+              }
+            >
+              {q.options[1]}
+            </button>
+            <button
+              className="option--btn"
+              onClick={(event) =>
+                handleSelectedOption(q.options[2], q.question, event)
+              }
+            >
+              {q.options[2]}
+            </button>
+            <button
+              className="option--btn"
+              onClick={(event) =>
+                handleSelectedOption(q.options[3], q.question, event)
+              }
+            >
+              {q.options[3]}
+            </button>
           </div>
-        ))}
-      </div>
+          <hr />
+        </div>
+      ))}
       <br />
-      <div className="solutions">
+      <div className="footer">
         {showScore && (
           <small className="score">
             You scored {score === -1 ? 0 : score}/
@@ -142,7 +120,7 @@ function QuickTest({ datas }: any) {
         {showScore ? (
           <Link href="/">
             <button
-              className="start--btn"
+              className="starter--btn"
               // onClick={handleNewGame}
             >
               New Game
@@ -150,7 +128,7 @@ function QuickTest({ datas }: any) {
           </Link>
         ) : (
           <button
-            className="start--btn"
+            className="starter--btn"
             onClick={() => handleCheck()}
           >
             Check Answer
